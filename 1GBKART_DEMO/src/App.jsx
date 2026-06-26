@@ -69,9 +69,9 @@ function HomePage() {
         </section>
 
         {/* Brand section */}
-        <section className="mb-4 sm:mb-8">
+        {/* <section className="mb-4 sm:mb-8">
           <BrandSection />
-        </section>
+        </section> */}
 
       </main>
 
