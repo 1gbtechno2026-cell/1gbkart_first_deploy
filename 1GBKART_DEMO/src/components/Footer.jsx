@@ -17,6 +17,8 @@ function Logo() {
   )
 }
 
+
+
 const trust = [
   { icon: <Truck size={18} />, label: 'Free Delivery', sub: 'On orders over ₹499' },
   { icon: <RotateCcw size={18} />, label: 'Easy Returns', sub: '10-day hassle-free' },
