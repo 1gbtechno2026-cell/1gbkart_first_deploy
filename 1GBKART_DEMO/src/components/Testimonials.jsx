@@ -48,24 +48,24 @@ export default function Testimonials() {
   const resume = () => start()
 
   return (
-    <section id="testimonials" className="py-24 bg-gradient-to-br from-slate-50 to-[#2D9DBB]/5 dark:from-slate-900 dark:to-slate-900 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="testimonials" className="py-10 sm:py-16 lg:py-24 bg-gradient-to-br from-slate-50 to-[#2D9DBB]/5 dark:from-slate-900 dark:to-slate-900 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-12 lg:mb-16"
         >
-          <span className="inline-block text-xs font-bold text-[#2D9DBB] uppercase tracking-widest bg-[#2D9DBB]/10 px-4 py-1.5 rounded-full mb-4">
+          <span className="inline-block text-xs font-bold text-[#2D9DBB] uppercase tracking-widest bg-[#2D9DBB]/10 px-4 py-1.5 rounded-full mb-3 sm:mb-4">
             Testimonials
           </span>
-          <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">
             Loved by Founders & Teams
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6" onMouseEnter={pause} onMouseLeave={resume}>
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6" onMouseEnter={pause} onMouseLeave={resume}>
           {reviews.map((r, i) => (
             <motion.div
               key={r.name}
@@ -74,7 +74,7 @@ export default function Testimonials() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
               onClick={() => setActive(i)}
-              className={`glass-dark relative cursor-pointer rounded-2xl p-7 transition-all duration-300 ${
+              className={`glass-dark relative cursor-pointer rounded-2xl p-4 sm:p-7 transition-all duration-300 ${
                 active === i
                   ? 'ring-2 ring-[#2D9DBB] shadow-brand scale-[1.02] bg-white/10'
                   : 'hover:bg-white/5 bg-slate-800/30 dark:bg-slate-800/40'

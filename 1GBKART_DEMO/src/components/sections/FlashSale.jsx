@@ -39,7 +39,7 @@ export default function FlashSale({ onQuickView }) {
       </div>
 
       {/* Cards */}
-      <div ref={ref} className="flex gap-4 overflow-x-auto pb-2" style={{ scrollbarWidth: 'none' }}>
+      <div ref={ref} className="flex gap-3 sm:gap-4 overflow-x-auto pb-2" style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}>
         {flashSaleProducts.map((p, i) => {
           const sold = stockPercent(p.stock)
           return (
@@ -49,7 +49,7 @@ export default function FlashSale({ onQuickView }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="flex-shrink-0 w-52 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-all group cursor-pointer"
+              className="flex-shrink-0 w-40 sm:w-52 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-all group cursor-pointer"
               onClick={() => onQuickView?.(p)}
             >
               <div className="relative aspect-square overflow-hidden bg-white/5">
@@ -61,9 +61,9 @@ export default function FlashSale({ onQuickView }) {
                   <span className="absolute top-2 right-2 bg-[#2D9DBB] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-lg">NEW</span>
                 )}
               </div>
-              <div className="p-3">
+              <div className="p-2 sm:p-3">
                 <p className="text-[10px] text-[#2D9DBB] font-bold uppercase">{p.brand}</p>
-                <p className="text-xs font-semibold text-white line-clamp-2 mt-0.5">{p.name}</p>
+                <p className="text-[11px] sm:text-xs font-semibold text-white line-clamp-2 mt-0.5">{p.name}</p>
                 <div className="flex items-baseline gap-1.5 mt-2">
                   <span className="text-sm font-black text-white">₹{p.price.toLocaleString()}</span>
                   <span className="text-[10px] text-slate-400 line-through">₹{p.mrp.toLocaleString()}</span>

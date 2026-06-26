@@ -29,7 +29,7 @@ export default function Footer() {
     <footer className="bg-[#0d1b2e] text-slate-400 mt-8">
       {/* Trust strip */}
       <div className="border-b border-white/5">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-8 py-6 grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {trust.map(t => (
             <div key={t.label} className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-[#2D9DBB]/15 flex items-center justify-center text-[#2D9DBB] flex-shrink-0">
@@ -46,17 +46,17 @@ export default function Footer() {
 
       {/* Newsletter */}
       <div className="border-b border-white/5">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-8 py-8">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-5">
-            <div>
-              <h3 className="text-lg font-bold text-white">Get exclusive deals in your inbox</h3>
-              <p className="text-sm text-slate-500">Join 2M+ shoppers. No spam, ever.</p>
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-4 sm:gap-5">
+            <div className="text-center lg:text-left">
+              <h3 className="text-base sm:text-lg font-bold text-white">Get exclusive deals in your inbox</h3>
+              <p className="text-xs sm:text-sm text-slate-500">Join 2M+ shoppers. No spam, ever.</p>
             </div>
             <div className="flex gap-2 w-full lg:w-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 lg:w-72 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-[#2D9DBB] transition-colors"
+                className="flex-1 lg:w-72 bg-white/5 border border-white/10 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-[#2D9DBB] transition-colors"
               />
               <button className="px-5 py-2.5 bg-[#2D9DBB] text-white font-bold text-sm rounded-xl hover:bg-[#1e7a94] transition-colors whitespace-nowrap">
                 Subscribe
@@ -67,7 +67,7 @@ export default function Footer() {
       </div>
 
       {/* Main grid */}
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-8 py-12 grid grid-cols-2 lg:grid-cols-5 gap-8">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12 grid grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8">
         {/* Brand */}
         <div className="col-span-2 lg:col-span-1">
           <Logo />
@@ -102,7 +102,7 @@ export default function Footer() {
 
       {/* App download */}
       <div className="border-t border-white/5">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
           <div className="flex items-center gap-3">
             <p className="text-xs text-slate-500">Download the app:</p>
             {['App Store', 'Google Play'].map(s => (

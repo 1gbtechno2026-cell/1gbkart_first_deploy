@@ -13,12 +13,12 @@ export default function DealsSection({ onQuickView }) {
 
   return (
     <section className="py-10">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-        <div className="flex items-center gap-4 flex-wrap">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-4 sm:mb-6">
+        <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
           <div>
             <div className="flex items-center gap-2 mb-0.5">
-              <Zap size={18} className="text-red-500 fill-red-500" />
-              <h2 className="text-xl font-black text-slate-900">Deals of the Day</h2>
+              <Zap size={16} className="text-red-500 fill-red-500" />
+              <h2 className="text-lg sm:text-xl font-black text-slate-900">Deals of the Day</h2>
             </div>
             <p className="text-xs text-slate-400">Limited time offers — don't miss out</p>
           </div>
@@ -35,9 +35,9 @@ export default function DealsSection({ onQuickView }) {
         </div>
       </div>
 
-      <div ref={ref} className="flex gap-4 overflow-x-auto pb-2" style={{ scrollbarWidth: 'none' }}>
+      <div ref={ref} className="flex gap-3 sm:gap-4 overflow-x-auto pb-2" style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}>
         {dealProducts.map(p => (
-          <div key={p.id} className="flex-shrink-0 w-64">
+          <div key={p.id} className="flex-shrink-0 w-48 sm:w-64">
             <ProductCard product={p} onQuickView={onQuickView} />
           </div>
         ))}

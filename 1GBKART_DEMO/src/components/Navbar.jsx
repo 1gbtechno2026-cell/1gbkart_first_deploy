@@ -65,8 +65,8 @@ export default function Navbar() {
       </div>
 
       {/* Main bar */}
-      <div className="px-4 lg:px-8 py-3">
-        <div className="flex items-center gap-3 lg:gap-5 max-w-[1400px] mx-auto">
+      <div className="px-3 sm:px-4 lg:px-8 py-2.5 sm:py-3">
+        <div className="flex items-center gap-2 sm:gap-3 lg:gap-5 max-w-[1400px] mx-auto">
           <Logo />
 
           {/* Deliver to */}
@@ -86,8 +86,8 @@ export default function Navbar() {
                 ref={searchRef}
                 value={query}
                 onChange={e => setQuery(e.target.value)}
-                placeholder="What are you looking for today?"
-                className="flex-1 px-3 py-2.5 text-sm bg-transparent outline-none text-slate-800 placeholder:text-slate-400"
+                placeholder="Search mobiles, laptops..."
+                className="flex-1 px-2 sm:px-3 py-2 sm:py-2.5 text-sm bg-transparent outline-none text-slate-800 placeholder:text-slate-400"
               />
               {query && (
                 <button onClick={() => setQuery('')} className="p-2 text-slate-400 hover:text-slate-600">
@@ -97,8 +97,9 @@ export default function Navbar() {
               <button className="px-3 py-2.5 text-slate-400 hover:text-[#2D9DBB] border-l border-slate-200 transition-colors">
                 <Mic size={16} />
               </button>
-              <button className="hidden sm:flex items-center gap-1.5 px-4 py-2.5 bg-[#2D9DBB] text-white text-sm font-semibold hover:bg-[#1e7a94] transition-colors">
-                Search
+              <button className="flex items-center justify-center gap-1.5 px-3 sm:px-4 py-2.5 bg-[#2D9DBB] text-white text-sm font-semibold hover:bg-[#1e7a94] transition-colors">
+                <Search size={15} className="sm:hidden" />
+                <span className="hidden sm:inline">Search</span>
               </button>
             </div>
           </div>

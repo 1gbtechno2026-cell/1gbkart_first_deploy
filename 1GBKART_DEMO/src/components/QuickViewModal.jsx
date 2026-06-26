@@ -30,21 +30,27 @@ export default function QuickViewModal() {
 
   return (
     <AnimatePresence>
+      {/* Backdrop */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={() => setQuickView(null)}
-        className="fixed inset-0 z-[200] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4"
+        className="fixed inset-0 z-[200] bg-black/50 backdrop-blur-sm flex items-end sm:items-center justify-center sm:p-4"
       >
+        {/* Modal: slides up on mobile, scales in on desktop */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.9, y: 20 }}
-          transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, y: '100%' }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: '100%' }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           onClick={e => e.stopPropagation()}
-          className="bg-white rounded-3xl overflow-hidden w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl"
+          className="bg-white rounded-t-3xl sm:rounded-3xl overflow-hidden w-full sm:max-w-3xl max-h-[92vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl"
         >
+          {/* Mobile drag handle */}
+          <div className="sm:hidden flex justify-center pt-3 pb-1">
+            <div className="w-10 h-1 rounded-full bg-slate-200" />
+          </div>
           <div className="grid md:grid-cols-2">
             {/* Images */}
             <div className="relative bg-slate-50">
@@ -81,7 +87,7 @@ export default function QuickViewModal() {
             </div>
 
             {/* Details */}
-            <div className="p-6 flex flex-col gap-4 relative">
+            <div className="p-4 sm:p-6 flex flex-col gap-3 sm:gap-4 relative">
               {/* Close */}
               <button onClick={() => setQuickView(null)} className="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-colors">
                 <X size={16} />

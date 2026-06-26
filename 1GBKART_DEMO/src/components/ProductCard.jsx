@@ -115,58 +115,59 @@ export default function ProductCard({ product, onQuickView }) {
       </div>
 
       {/* Info */}
-      <div className="p-4 flex flex-col flex-1">
-        <p className="text-[10px] font-bold text-[#2D9DBB] uppercase tracking-wide mb-0.5">{product.brand}</p>
-        <h3 className="text-sm font-semibold text-slate-800 leading-tight mb-1 line-clamp-2 group-hover:text-[#2D9DBB] transition-colors">
+      <div className="p-2.5 sm:p-4 flex flex-col flex-1">
+        <p className="text-[9px] sm:text-[10px] font-bold text-[#2D9DBB] uppercase tracking-wide mb-0.5">{product.brand}</p>
+        <h3 className="text-xs sm:text-sm font-semibold text-slate-800 leading-tight mb-1 line-clamp-2 group-hover:text-[#2D9DBB] transition-colors">
           {product.name}
         </h3>
-        <p className="text-[11px] text-slate-400 line-clamp-1 mb-2">{product.desc}</p>
+        <p className="text-[10px] text-slate-400 line-clamp-1 mb-1.5 hidden sm:block">{product.desc}</p>
 
         {/* Rating */}
-        <div className="flex items-center gap-1.5 mb-2">
+        <div className="flex items-center gap-1 sm:gap-1.5 mb-1.5 sm:mb-2">
           <RatingStars rating={product.rating} />
-          <span className="text-[10px] font-bold text-slate-700">{product.rating}</span>
-          <span className="text-[10px] text-slate-400">({product.reviews.toLocaleString()})</span>
+          <span className="text-[9px] sm:text-[10px] font-bold text-slate-700">{product.rating}</span>
+          <span className="text-[9px] sm:text-[10px] text-slate-400 hidden sm:inline">({product.reviews.toLocaleString()})</span>
         </div>
 
         {/* Price */}
-        <div className="flex items-baseline gap-2 mb-1">
-          <span className="text-base font-black text-slate-900">₹{product.price.toLocaleString()}</span>
-          <span className="text-xs text-slate-400 line-through">₹{product.mrp.toLocaleString()}</span>
-          <span className="text-xs font-bold text-green-600">{product.discount}% off</span>
+        <div className="flex items-baseline gap-1 sm:gap-2 mb-1">
+          <span className="text-sm sm:text-base font-black text-slate-900">₹{product.price.toLocaleString()}</span>
+          <span className="text-[10px] sm:text-xs text-slate-400 line-through">₹{product.mrp.toLocaleString()}</span>
+          <span className="text-[10px] sm:text-xs font-bold text-green-600 hidden sm:inline">{product.discount}% off</span>
         </div>
 
         {/* Delivery */}
-        <p className="text-[10px] text-slate-400 mb-3">
-          <span className="text-green-600 font-semibold">FREE delivery</span> · {product.delivery}
+        <p className="text-[9px] sm:text-[10px] text-slate-400 mb-2 sm:mb-3">
+          <span className="text-green-600 font-semibold">FREE</span> · {product.delivery}
         </p>
 
         {/* Stock indicator */}
         {product.stock < 20 && (
-          <p className="text-[10px] text-red-500 font-semibold mb-2">Only {product.stock} left!</p>
+          <p className="text-[9px] sm:text-[10px] text-red-500 font-semibold mb-1.5 sm:mb-2">Only {product.stock} left!</p>
         )}
 
         {/* Buttons — pinned to bottom */}
-        <div className="flex gap-2 mt-auto">
+        <div className="flex gap-1.5 sm:gap-2 mt-auto">
           <motion.button
             whileTap={{ scale: 0.93 }}
             onClick={() => addToCart(product)}
-            className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-bold border-2 transition-all ${
+            className={`flex-1 flex items-center justify-center gap-1 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-bold border-2 transition-all ${
               justAdded
                 ? 'bg-green-500 border-green-500 text-white'
                 : 'border-[#2D9DBB] text-[#2D9DBB] hover:bg-[#2D9DBB] hover:text-white'
             }`}
           >
-            <ShoppingCart size={13} />
-            {justAdded ? 'Added!' : 'Add to Cart'}
+            <ShoppingCart size={11} className="sm:w-[13px] sm:h-[13px]" />
+            <span className="hidden sm:inline">{justAdded ? 'Added!' : 'Add to Cart'}</span>
+            <span className="sm:hidden">{justAdded ? '✓' : 'Cart'}</span>
           </motion.button>
 
           <motion.button
             whileTap={{ scale: 0.93 }}
             onClick={handleBuyNow}
-            className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-bold bg-[#1e7a94] text-white hover:bg-[#2D9DBB] transition-colors"
+            className="flex-1 flex items-center justify-center gap-1 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-bold bg-[#1e7a94] text-white hover:bg-[#2D9DBB] transition-colors"
           >
-            <Zap size={13} />
+            <Zap size={11} className="sm:w-[13px] sm:h-[13px]" />
             {buying ? '...' : 'Buy Now'}
           </motion.button>
         </div>

@@ -36,7 +36,7 @@ function HomePage() {
       <QuickViewModal />
 
       {/* Push content below fixed navbar — navbar ~108px total (strip + main + cats) */}
-      <main className="max-w-[1400px] mx-auto px-4 lg:px-8 pt-[108px] lg:pt-[120px]">
+      <main className="max-w-[1400px] mx-auto px-3 sm:px-4 lg:px-8 pt-[118px] lg:pt-[132px]">
 
         {/* Hero */}
         <section className="mb-8">
@@ -44,32 +44,32 @@ function HomePage() {
         </section>
 
         {/* Categories */}
-        <section className="mb-8 bg-white rounded-2xl p-5 border border-slate-100 shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+        <section className="mb-4 sm:mb-8 bg-white rounded-2xl p-3 sm:p-5 border border-slate-100 shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
           <CategoryCarousel />
         </section>
 
         {/* Flash Sale */}
-        <section className="mb-8">
+        <section className="mb-4 sm:mb-8">
           <FlashSale onQuickView={qv} />
         </section>
 
         {/* Deals of the Day */}
-        <section className="mb-8 bg-white rounded-2xl p-5 border border-slate-100">
+        <section className="mb-4 sm:mb-8 bg-white rounded-2xl p-3 sm:p-5 border border-slate-100">
           <DealsSection onQuickView={qv} />
         </section>
 
         {/* Promo banners */}
-        <section className="mb-8">
+        <section className="mb-4 sm:mb-8">
           <PromoBanners />
         </section>
 
         {/* Hot Selling grid */}
-        <section className="mb-8 bg-white rounded-2xl p-5 border border-slate-100">
+        <section className="mb-4 sm:mb-8 bg-white rounded-2xl p-3 sm:p-5 border border-slate-100">
           <ProductGrid onQuickView={qv} />
         </section>
 
         {/* Brand section */}
-        <section className="mb-8">
+        <section className="mb-4 sm:mb-8">
           <BrandSection />
         </section>
 

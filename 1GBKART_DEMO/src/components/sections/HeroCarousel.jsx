@@ -27,7 +27,7 @@ export default function HeroCarousel() {
   }
 
   return (
-    <div className="relative w-full overflow-hidden rounded-2xl lg:rounded-3xl" style={{ height: 'clamp(220px, 40vw, 480px)' }}>
+    <div className="relative w-full overflow-hidden rounded-2xl lg:rounded-3xl" style={{ height: 'clamp(200px, 52vw, 480px)' }}>
       <AnimatePresence custom={dir} initial={false}>
         <motion.div
           key={active}
@@ -44,18 +44,18 @@ export default function HeroCarousel() {
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="absolute top-5 left-5 lg:top-7 lg:left-8 text-xs font-black tracking-widest px-3 py-1 rounded-full bg-white/20 text-white backdrop-blur-sm border border-white/20"
+            className="absolute top-3 left-3 sm:top-5 sm:left-5 lg:top-7 lg:left-8 text-[10px] sm:text-xs font-black tracking-widest px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-white/20 text-white backdrop-blur-sm border border-white/20"
           >
             {heroBanners[active].badge}
           </motion.span>
 
           {/* Text */}
-          <div className="px-8 lg:px-16 z-10 max-w-md">
+          <div className="px-5 sm:px-8 lg:px-16 z-10 max-w-[58%] sm:max-w-sm lg:max-w-md">
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 }}
-              className="text-white/70 text-sm font-semibold tracking-wide mb-1"
+              className="text-white/70 text-xs sm:text-sm font-semibold tracking-wide mb-1"
             >
               {heroBanners[active].subtitle}
             </motion.p>
@@ -63,8 +63,8 @@ export default function HeroCarousel() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-white font-black leading-tight mb-3"
-              style={{ fontSize: 'clamp(24px, 4vw, 52px)' }}
+              className="text-white font-black leading-tight mb-2 sm:mb-3"
+              style={{ fontSize: 'clamp(18px, 5vw, 52px)' }}
             >
               {heroBanners[active].title}
             </motion.h2>
@@ -72,7 +72,7 @@ export default function HeroCarousel() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="text-white/80 text-sm mb-6 hidden sm:block"
+              className="text-white/80 text-sm mb-4 sm:mb-6 hidden sm:block"
             >
               {heroBanners[active].desc}
             </motion.p>
@@ -82,18 +82,18 @@ export default function HeroCarousel() {
               transition={{ delay: 0.35 }}
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
-              className="bg-white text-slate-900 font-bold px-6 py-3 rounded-xl text-sm hover:bg-white/90 transition-colors shadow-lg"
+              className="bg-white text-slate-900 font-bold px-4 sm:px-6 py-2 sm:py-3 rounded-xl text-xs sm:text-sm hover:bg-white/90 transition-colors shadow-lg"
             >
               {heroBanners[active].cta} →
             </motion.button>
           </div>
 
-          {/* Emoji float */}
+          {/* Emoji float — hidden on very small screens */}
           <motion.div
             initial={{ opacity: 0, scale: 0.7, x: 40 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ delay: 0.25, duration: 0.6 }}
-            className="absolute right-8 lg:right-20 bottom-0 text-[80px] lg:text-[120px] leading-none select-none"
+            className="absolute right-3 sm:right-8 lg:right-20 bottom-0 text-[56px] sm:text-[80px] lg:text-[120px] leading-none select-none"
             style={{ filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.3))' }}
           >
             <motion.span
