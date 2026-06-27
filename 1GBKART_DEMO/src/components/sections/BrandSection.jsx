@@ -13,10 +13,10 @@ export default function BrandSection() {
     <section className="py-6">
       <div className="flex items-center justify-between mb-5">
         <div>
-          <h2 className="text-xl font-black text-slate-900">Featured Brands</h2>
-          <p className="text-xs text-slate-400 mt-0.5">Top picks from premium brands</p>
+          <h2 className="text-xl font-black text-slate-900">Brand in Spotlight</h2>
+          <p className="text-xs text-slate-400 mt-0.5">Featured brands — products we want you to discover</p>
         </div>
-        <span className="text-xs font-semibold text-[#2D9DBB] cursor-pointer hover:underline">View All</span>
+        <span className="text-xs font-semibold text-[#2D9DBB] cursor-pointer hover:underline transition-colors">View All →</span>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -28,8 +28,7 @@ export default function BrandSection() {
             viewport={{ once: true }}
             transition={{ delay: i * 0.08 }}
             whileHover={{ y: -4 }}
-            style={{ '--tw-shadow': '0 12px 40px rgba(45,157,187,0.18)' }}
-            className="bg-white border border-slate-100 rounded-2xl p-5 cursor-pointer hover:border-[#2D9DBB]/40 hover:shadow-xl transition-all group flex flex-col items-center text-center"
+            className="bg-white border border-slate-100 rounded-2xl p-5 cursor-pointer hover:border-[#2D9DBB]/40 hover:shadow-[0_12px_40px_rgba(45,157,187,0.18)] transition-all group flex flex-col items-center text-center"
           >
             <div className="w-20 h-20 rounded-2xl bg-slate-50 flex items-center justify-center mb-4 group-hover:bg-[#2D9DBB]/5 transition-colors overflow-hidden">
               <img

@@ -9,6 +9,7 @@ import FlashSale from './components/sections/FlashSale'
 import ProductGrid from './components/sections/ProductGrid'
 import PromoBanners from './components/sections/PromoBanners'
 import BrandSection from './components/sections/BrandSection'
+import SuggestedProducts from './components/sections/SuggestedProducts'
 import QuickViewModal from './components/QuickViewModal'
 import CartDrawer from './components/CartDrawer'
 import Footer from './components/Footer'
@@ -63,15 +64,20 @@ function HomePage() {
           <PromoBanners />
         </section>
 
-        {/* Hot Selling grid */}
+        {/* Brand in Spotlight */}
+        <section className="mb-4 sm:mb-8 bg-white rounded-2xl p-3 sm:p-5 border border-slate-100">
+          <BrandSection />
+        </section>
+
+        {/* Suggested Products */}
+        <section className="mb-4 sm:mb-8 bg-white rounded-2xl p-3 sm:p-5 border border-slate-100">
+          <SuggestedProducts onQuickView={qv} />
+        </section>
+
+        {/* Trendy Products grid */}
         <section className="mb-4 sm:mb-8 bg-white rounded-2xl p-3 sm:p-5 border border-slate-100">
           <ProductGrid onQuickView={qv} />
         </section>
-
-        {/* Brand section */}
-        {/* <section className="mb-4 sm:mb-8">
-          <BrandSection />
-        </section> */}
 
       </main>
 

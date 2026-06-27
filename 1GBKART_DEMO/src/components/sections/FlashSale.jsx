@@ -28,7 +28,8 @@ export default function FlashSale({ onQuickView }) {
           </div>
           <CountdownTimer endMs={END} />
         </div>
-        <div className="flex gap-2">
+        <div className="flex items-center gap-3">
+          <span className="text-xs font-semibold text-[#2D9DBB] cursor-pointer hover:underline transition-colors whitespace-nowrap">View ALL →</span>
           <button onClick={() => scroll(-1)} className="w-8 h-8 rounded-full border border-white/20 text-white flex items-center justify-center hover:bg-white/10 transition-all">
             <ChevronLeft size={14} />
           </button>
