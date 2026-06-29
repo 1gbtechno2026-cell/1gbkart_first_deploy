@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { CartProvider, useCart } from './context/CartContext'
 import SplashScreen from './components/SplashScreen'
 import Navbar from './components/Navbar'
@@ -13,6 +14,14 @@ import SuggestedProducts from './components/sections/SuggestedProducts'
 import QuickViewModal from './components/QuickViewModal'
 import CartDrawer from './components/CartDrawer'
 import Footer from './components/Footer'
+
+import LoginPage from './pages/LoginPage'
+import BuyerRegisterPage from './pages/BuyerRegisterPage'
+import SellerRegisterPage from './pages/SellerRegisterPage'
+import CategoryPage from './pages/CategoryPage'
+import ProductPage from './pages/ProductPage'
+import CartPage from './pages/CartPage'
+
 import './index.css'
 
 function SectionDivider({ title, sub }) {
@@ -36,7 +45,7 @@ function HomePage() {
       <CartDrawer />
       <QuickViewModal />
 
-      {/* Push content below fixed navbar — navbar ~108px total (strip + main + cats) */}
+      {/* Push content below fixed navbar */}
       <main className="max-w-[1400px] mx-auto px-3 sm:px-4 lg:px-8 pt-[118px] lg:pt-[132px]">
 
         {/* Hero */}
@@ -86,18 +95,33 @@ function HomePage() {
   )
 }
 
+function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register/buyer" element={<BuyerRegisterPage />} />
+      <Route path="/register/seller" element={<SellerRegisterPage />} />
+      <Route path="/category/:slug" element={<CategoryPage />} />
+      <Route path="/product/:id" element={<ProductPage />} />
+      <Route path="/cart" element={<CartPage />} />
+    </Routes>
+  )
+}
+
 export default function App() {
   const [ready, setReady] = useState(false)
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] antialiased">
-      {/* Unmount completely once done so it can never re-trigger */}
-      {!ready && <SplashScreen onDone={() => setReady(true)} />}
-      {ready && (
-        <CartProvider>
-          <HomePage />
-        </CartProvider>
-      )}
-    </div>
+    <BrowserRouter>
+      <div className="min-h-screen bg-[#f8fafc] antialiased">
+        {!ready && <SplashScreen onDone={() => setReady(true)} />}
+        {ready && (
+          <CartProvider>
+            <AppRoutes />
+          </CartProvider>
+        )}
+      </div>
+    </BrowserRouter>
   )
 }

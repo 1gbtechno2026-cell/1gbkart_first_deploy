@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Search, Mic, ShoppingCart, Heart, Bell, User, ChevronDown,
@@ -8,7 +9,7 @@ import { useCart } from '../context/CartContext'
 
 function Logo() {
   return (
-    <a href="#" className="flex items-center gap-2 select-none flex-shrink-0">
+    <Link to="/" className="flex items-center gap-2 select-none flex-shrink-0">
       <img
         src="/1gbkart logo .webp"
         alt="1GB KART"
@@ -17,7 +18,7 @@ function Logo() {
       <span className="font-black text-lg tracking-tight hidden sm:block">
         <span className="text-[#B8BDC9]">1GB</span><span className="text-[#2D9DBB]">KART</span>
       </span>
-    </a>
+    </Link>
   )
 }
 
@@ -29,6 +30,12 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [query, setQuery] = useState('')
   const searchRef = useRef(null)
+  const navigate = useNavigate()
+
+  const handleSearch = (e) => {
+    e.preventDefault()
+    if (query.trim()) navigate(`/category/all?q=${encodeURIComponent(query.trim())}`)
+  }
 
   useEffect(() => {
     const fn = () => {
@@ -79,7 +86,7 @@ export default function Navbar() {
           </button>
 
           {/* Search bar */}
-          <div className="flex-1 relative">
+          <form onSubmit={handleSearch} className="flex-1 relative">
             <div className="flex items-center bg-slate-50 border border-slate-200 rounded-xl overflow-hidden hover:border-[#2D9DBB] focus-within:border-[#2D9DBB] focus-within:ring-2 focus-within:ring-[#2D9DBB]/20 transition-all">
               <Search size={16} className="ml-4 text-slate-400 flex-shrink-0" />
               <input
@@ -90,27 +97,27 @@ export default function Navbar() {
                 className="flex-1 px-2 sm:px-3 py-2 sm:py-2.5 text-sm bg-transparent outline-none text-slate-800 placeholder:text-slate-400"
               />
               {query && (
-                <button onClick={() => setQuery('')} className="p-2 text-slate-400 hover:text-slate-600">
+                <button type="button" onClick={() => setQuery('')} className="p-2 text-slate-400 hover:text-slate-600">
                   <X size={14} />
                 </button>
               )}
-              <button className="px-3 py-2.5 text-slate-400 hover:text-[#2D9DBB] border-l border-slate-200 transition-colors">
+              <button type="button" className="px-3 py-2.5 text-slate-400 hover:text-[#2D9DBB] border-l border-slate-200 transition-colors">
                 <Mic size={16} />
               </button>
-              <button className="flex items-center justify-center gap-1.5 px-3 sm:px-4 py-2.5 bg-[#2D9DBB] text-white text-sm font-semibold hover:bg-[#1e7a94] transition-colors">
+              <button type="submit" className="flex items-center justify-center gap-1.5 px-3 sm:px-4 py-2.5 bg-[#2D9DBB] text-white text-sm font-semibold hover:bg-[#1e7a94] transition-colors">
                 <Search size={15} className="sm:hidden" />
                 <span className="hidden sm:inline">Search</span>
               </button>
             </div>
-          </div>
+          </form>
 
           {/* Right icons */}
           <div className="hidden md:flex items-center gap-1">
             {/* Account */}
-            <button className="flex flex-col items-center px-3 py-1.5 rounded-xl hover:bg-slate-50 transition-colors group">
+            <Link to="/login" className="flex flex-col items-center px-3 py-1.5 rounded-xl hover:bg-slate-50 transition-colors group">
               <User size={20} className="text-slate-600 group-hover:text-[#2D9DBB] transition-colors" />
               <span className="text-[10px] text-slate-500 mt-0.5 hidden lg:block">Account</span>
-            </button>
+            </Link>
 
             {/* Orders */}
             <button className="flex flex-col items-center px-3 py-1.5 rounded-xl hover:bg-slate-50 transition-colors group">
@@ -136,9 +143,8 @@ export default function Navbar() {
             </button>
 
             {/* Cart */}
-            <motion.button
-              whileTap={{ scale: 0.92 }}
-              onClick={() => setCartOpen(true)}
+            <Link
+              to="/cart"
               className="relative flex flex-col items-center px-3 py-1.5 rounded-xl hover:bg-[#2D9DBB]/10 transition-colors group"
             >
               <div className="relative">
@@ -158,12 +164,12 @@ export default function Navbar() {
                 </AnimatePresence>
               </div>
               <span className="text-[10px] text-[#2D9DBB] font-semibold mt-0.5 hidden lg:block">Cart</span>
-            </motion.button>
+            </Link>
           </div>
 
           {/* Mobile cart */}
-          <button
-            onClick={() => setCartOpen(true)}
+          <Link
+            to="/cart"
             className="md:hidden relative p-2 rounded-xl hover:bg-slate-50"
           >
             <ShoppingCart size={22} className="text-[#2D9DBB]" />
@@ -172,7 +178,7 @@ export default function Navbar() {
                 {count}
               </span>
             )}
-          </button>
+          </Link>
 
           <button onClick={() => setMobileOpen(o => !o)} className="md:hidden p-2 rounded-xl hover:bg-slate-50">
             {mobileOpen ? <X size={22} className="text-slate-600" /> : <Menu size={22} className="text-slate-600" />}
@@ -182,31 +188,50 @@ export default function Navbar() {
 
       {/* Category nav — desktop */}
       <div className="hidden lg:flex items-center gap-6 px-8 py-2 border-t border-slate-100 bg-white max-w-[1400px] mx-auto">
-        {['All Categories','Mobile Phones','Laptops','Earphones','Neckbands','TV','New Arrivals','Deals'].map((cat, i) => (
-          <button
-            key={cat}
+        {[
+          { label: 'All Categories', slug: 'all' },
+          { label: 'Mobile Phones', slug: 'mobile-phones' },
+          { label: 'Laptops', slug: 'laptops' },
+          { label: 'Earphones', slug: 'earphones' },
+          { label: 'Neckbands', slug: 'neckbands' },
+          { label: 'TV', slug: 'tv' },
+          { label: 'New Arrivals', slug: 'new-arrivals' },
+          { label: 'Deals', slug: 'deals' },
+        ].map((cat, i) => (
+          <Link
+            key={cat.slug}
+            to={`/category/${cat.slug}`}
             className={`text-xs font-semibold whitespace-nowrap transition-colors ${
               i === 0 ? 'text-[#2D9DBB]' : 'text-slate-600 hover:text-[#2D9DBB]'
             }`}
           >
-            {cat}
-          </button>
+            {cat.label}
+          </Link>
         ))}
       </div>
 
       {/* Category pills — mobile horizontal scroll */}
       <div className="lg:hidden flex gap-2 overflow-x-auto px-4 pb-2 pt-1 border-t border-slate-100 bg-white" style={{ scrollbarWidth: 'none' }}>
-        {['All','Mobiles','Laptops','Earphones','Neckbands','TV','Deals'].map((cat, i) => (
-          <button
-            key={cat}
+        {[
+          { label: 'All', slug: 'all' },
+          { label: 'Mobiles', slug: 'mobile-phones' },
+          { label: 'Laptops', slug: 'laptops' },
+          { label: 'Earphones', slug: 'earphones' },
+          { label: 'Neckbands', slug: 'neckbands' },
+          { label: 'TV', slug: 'tv' },
+          { label: 'Deals', slug: 'deals' },
+        ].map((cat, i) => (
+          <Link
+            key={cat.slug}
+            to={`/category/${cat.slug}`}
             className={`flex-shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full border whitespace-nowrap transition-colors ${
               i === 0
                 ? 'bg-[#2D9DBB] text-white border-[#2D9DBB]'
                 : 'text-slate-600 border-slate-200 hover:border-[#2D9DBB] hover:text-[#2D9DBB]'
             }`}
           >
-            {cat}
-          </button>
+            {cat.label}
+          </Link>
         ))}
       </div>
 
@@ -222,15 +247,20 @@ export default function Navbar() {
           >
             <div className="px-4 py-3 flex flex-col gap-1">
               {[
-                { label: 'My Account', icon: '👤' },
-                { label: 'My Orders', icon: '📦' },
-                { label: 'Wishlist', icon: '❤️' },
-                { label: 'Support', icon: '🎧' },
-                { label: 'Track Order', icon: '🚚' },
+                { label: 'My Account', icon: '👤', to: '/login' },
+                { label: 'My Orders', icon: '📦', to: '/login' },
+                { label: 'Wishlist', icon: '❤️', to: '/login' },
+                { label: 'Support', icon: '🎧', to: '/category/all' },
+                { label: 'Track Order', icon: '🚚', to: '/login' },
               ].map(l => (
-                <button key={l.label} className="flex items-center gap-3 text-sm font-medium text-slate-700 text-left px-2 py-3 border-b border-slate-50 hover:text-[#2D9DBB] transition-colors">
+                <Link
+                  key={l.label}
+                  to={l.to}
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center gap-3 text-sm font-medium text-slate-700 text-left px-2 py-3 border-b border-slate-50 hover:text-[#2D9DBB] transition-colors"
+                >
                   <span className="text-base">{l.icon}</span> {l.label}
-                </button>
+                </Link>
               ))}
             </div>
           </motion.div>

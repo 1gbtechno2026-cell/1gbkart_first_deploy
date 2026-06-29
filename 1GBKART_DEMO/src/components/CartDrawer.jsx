@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { X, ShoppingCart, Trash2, Plus, Minus, Zap, ArrowRight } from 'lucide-react'
 import { useCart } from '../context/CartContext'
 
@@ -109,10 +110,14 @@ export default function CartDrawer() {
                   <span className="text-base font-black text-slate-900">₹{total.toLocaleString()}</span>
                 </div>
 
-                <button className="w-full flex items-center justify-center gap-2 py-3.5 bg-[#2D9DBB] text-white font-bold rounded-xl hover:bg-[#1e7a94] transition-colors shadow-sm">
+                <Link
+                  to="/cart"
+                  onClick={() => setCartOpen(false)}
+                  className="w-full flex items-center justify-center gap-2 py-3.5 bg-[#2D9DBB] text-white font-bold rounded-xl hover:bg-[#1e7a94] transition-colors shadow-sm"
+                >
                   <Zap size={16} /> Proceed to Checkout <ArrowRight size={16} />
-                </button>
-                <button className="w-full text-center text-sm text-slate-500 hover:text-[#2D9DBB] transition-colors py-1">
+                </Link>
+                <button onClick={() => setCartOpen(false)} className="w-full text-center text-sm text-slate-500 hover:text-[#2D9DBB] transition-colors py-1">
                   Continue Shopping
                 </button>
               </div>

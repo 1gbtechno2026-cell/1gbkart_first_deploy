@@ -32,6 +32,13 @@ function cartReducer(state, action) {
           i.id === action.id ? { ...i, qty: Math.max(1, i.qty - 1) } : i
         ),
       }
+    case 'SET_QTY':
+      return {
+        ...state,
+        items: state.items.map(i =>
+          i.id === action.id ? { ...i, qty: action.qty } : i
+        ),
+      }
     case 'CLEAR':
       return { ...state, items: [] }
     default:
@@ -52,15 +59,24 @@ export function CartProvider({ children }) {
     setTimeout(() => setRecentlyAdded(null), 1500)
   }
 
+  const removeFromCart = (id) => dispatch({ type: 'REMOVE', id })
+
+  const updateQty = (id, qty) => {
+    if (qty < 1) return dispatch({ type: 'REMOVE', id })
+    dispatch({ type: 'SET_QTY', id, qty })
+  }
+
   const toggleWishlist = (id) => {
     setWishlist(w => w.includes(id) ? w.filter(i => i !== id) : [...w, id])
   }
 
   const total = state.items.reduce((s, i) => s + i.price * i.qty, 0)
   const count = state.items.reduce((s, i) => s + i.qty, 0)
+  const cart = state.items
 
   return (
     <CartContext.Provider value={{
+      cart,
       items: state.items,
       total,
       count,
@@ -72,6 +88,8 @@ export function CartProvider({ children }) {
       setQuickView,
       recentlyAdded,
       addToCart,
+      removeFromCart,
+      updateQty,
       dispatch,
     }}>
       {children}
