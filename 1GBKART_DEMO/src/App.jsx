@@ -21,6 +21,8 @@ import SellerRegisterPage from './pages/SellerRegisterPage'
 import CategoryPage from './pages/CategoryPage'
 import ProductPage from './pages/ProductPage'
 import CartPage from './pages/CartPage'
+import BuyerDashboard from './pages/BuyerDashboard'
+import SellerDashboard from './pages/SellerDashboard'
 
 import './index.css'
 
@@ -105,6 +107,8 @@ function AppRoutes() {
       <Route path="/category/:slug" element={<CategoryPage />} />
       <Route path="/product/:id" element={<ProductPage />} />
       <Route path="/cart" element={<CartPage />} />
+      <Route path="/dashboard/buyer" element={<BuyerDashboard />} />
+      <Route path="/dashboard/seller" element={<SellerDashboard />} />
     </Routes>
   )
 }

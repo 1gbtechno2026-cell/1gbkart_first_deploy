@@ -29,7 +29,7 @@ export default function LoginPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    navigate('/')
+    navigate(tab === 'seller' ? '/dashboard/seller' : '/dashboard/buyer')
   }
 
   return (
