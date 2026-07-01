@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
-  Search, Mic, ShoppingCart, Heart, Bell, User, ChevronDown,
+  Search, ShoppingCart, Heart, Bell, User, ChevronDown,
   MapPin, Package, Headphones, Menu, X, Zap
 } from 'lucide-react'
 import { useCart } from '../context/CartContext'
@@ -101,9 +101,6 @@ export default function Navbar() {
                   <X size={14} />
                 </button>
               )}
-              <button type="button" className="px-3 py-2.5 text-slate-400 hover:text-[#2D9DBB] border-l border-slate-200 transition-colors">
-                <Mic size={16} />
-              </button>
               <button type="submit" className="flex items-center justify-center gap-1.5 px-3 sm:px-4 py-2.5 bg-[#2D9DBB] text-white text-sm font-semibold hover:bg-[#1e7a94] transition-colors">
                 <Search size={15} className="sm:hidden" />
                 <span className="hidden sm:inline">Search</span>
@@ -184,55 +181,6 @@ export default function Navbar() {
             {mobileOpen ? <X size={22} className="text-slate-600" /> : <Menu size={22} className="text-slate-600" />}
           </button>
         </div>
-      </div>
-
-      {/* Category nav — desktop */}
-      <div className="hidden lg:flex items-center gap-6 px-8 py-2 border-t border-slate-100 bg-white max-w-[1400px] mx-auto">
-        {[
-          { label: 'All Categories', slug: 'all' },
-          { label: 'Mobile Phones', slug: 'mobile-phones' },
-          { label: 'Laptops', slug: 'laptops' },
-          { label: 'Earphones', slug: 'earphones' },
-          { label: 'Neckbands', slug: 'neckbands' },
-          { label: 'TV', slug: 'tv' },
-          { label: 'New Arrivals', slug: 'new-arrivals' },
-          { label: 'Deals', slug: 'deals' },
-        ].map((cat, i) => (
-          <Link
-            key={cat.slug}
-            to={`/category/${cat.slug}`}
-            className={`text-xs font-semibold whitespace-nowrap transition-colors ${
-              i === 0 ? 'text-[#2D9DBB]' : 'text-slate-600 hover:text-[#2D9DBB]'
-            }`}
-          >
-            {cat.label}
-          </Link>
-        ))}
-      </div>
-
-      {/* Category pills — mobile horizontal scroll */}
-      <div className="lg:hidden flex gap-2 overflow-x-auto px-4 pb-2 pt-1 border-t border-slate-100 bg-white" style={{ scrollbarWidth: 'none' }}>
-        {[
-          { label: 'All', slug: 'all' },
-          { label: 'Mobiles', slug: 'mobile-phones' },
-          { label: 'Laptops', slug: 'laptops' },
-          { label: 'Earphones', slug: 'earphones' },
-          { label: 'Neckbands', slug: 'neckbands' },
-          { label: 'TV', slug: 'tv' },
-          { label: 'Deals', slug: 'deals' },
-        ].map((cat, i) => (
-          <Link
-            key={cat.slug}
-            to={`/category/${cat.slug}`}
-            className={`flex-shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full border whitespace-nowrap transition-colors ${
-              i === 0
-                ? 'bg-[#2D9DBB] text-white border-[#2D9DBB]'
-                : 'text-slate-600 border-slate-200 hover:border-[#2D9DBB] hover:text-[#2D9DBB]'
-            }`}
-          >
-            {cat.label}
-          </Link>
-        ))}
       </div>
 
       {/* Mobile menu */}

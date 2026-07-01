@@ -48,7 +48,7 @@ function HomePage() {
       <QuickViewModal />
 
       {/* Push content below fixed navbar */}
-      <main className="max-w-[1400px] mx-auto px-3 sm:px-4 lg:px-8 pt-[118px] lg:pt-[132px]">
+      <main className="max-w-[1400px] mx-auto px-3 sm:px-4 lg:px-8 pt-[80px] lg:pt-[90px]">
 
         {/* Hero */}
         <section className="mb-8">
